@@ -1,30 +1,36 @@
-// 48_Rotate_Image
-class Solution
+namespace _48_Rotate_Image
 {
-public:
-    void rotate(vector<vector<int>>& matrix)
+#include<solution.h>
+
+    // 48_Rotate_Image
+    class Solution
     {
-        int n = matrix.size();
-        int temp = 0;
-        for (int i = 0; i < n; i++)
+    public:
+        void rotate(vector<vector<int>>& matrix)
         {
-            for (int j = 0; j < i + 1; j++)
+            int n = matrix.size();
+            int temp = 0;
+            for (int i = 0; i < n; i++)
             {
-                temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+                for (int j = 0; j < i + 1; j++)
+                {
+                    temp = matrix[i][j];
+                    matrix[i][j] = matrix[j][i];
+                    matrix[j][i] = temp;
+                }
             }
-        }
 
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < n / 2; j++)
+            for (int i = 0; i < n; i++)
             {
-                temp = matrix[i][j];
-                matrix[i][j] = matrix[i][n - 1 - j];
-                matrix[i][n - 1 - j] = temp;
+                for (int j = 0; j < n / 2; j++)
+                {
+                    temp = matrix[i][j];
+                    matrix[i][j] = matrix[i][n - 1 - j];
+                    matrix[i][n - 1 - j] = temp;
+                }
             }
-        }
 
-    }
-};
+        }
+    };
+
+}

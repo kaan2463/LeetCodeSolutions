@@ -1,48 +1,54 @@
-// 2870_Minimum_Number_of_Operations_to_Make_Array_Empty
-class Solution
+namespace _2870_Minimum_Number_of_Operations_to_Make_Array_Empty
 {
-    map<int, int> memo;
+#include<solution.h>
 
-    int min(int a, int b)
+    // 2870_Minimum_Number_of_Operations_to_Make_Array_Empty
+    class Solution
     {
-        return a > b ? b : a;
-    }
+        map<int, int> memo;
 
-public:
-    int minOperations(vector<int>& nums)
-    {
-        map<int, int> counter;
-        for (int i = 0; i < nums.size(); i++)
+        int min(int a, int b)
         {
-            counter[nums[i]]++;
+            return a > b ? b : a;
         }
 
-        int sum = 0;
-
-        for (auto item : counter)
+    public:
+        int minOperations(vector<int>& nums)
         {
-            if (item.second == 1)
+            map<int, int> counter;
+            for (int i = 0; i < nums.size(); i++)
             {
-                return -1;
+                counter[nums[i]]++;
             }
-            sum += findMinimumMove(item.second);
+
+            int sum = 0;
+
+            for (auto item : counter)
+            {
+                if (item.second == 1)
+                {
+                    return -1;
+                }
+                sum += findMinimumMove(item.second);
+            }
+
+            return sum;
         }
 
-        return sum;
-    }
-
-    int findMinimumMove(int x)
-    {
-        if (memo[x] > 0)
+        int findMinimumMove(int x)
         {
+            if (memo[x] > 0)
+            {
+                return memo[x];
+            }
+            if (x < 1)
+            {
+                return 0;
+            }
+
+            memo[x] = min(findMinimumMove(x - 2), findMinimumMove(x - 3)) + 1;
             return memo[x];
         }
-        if (x < 1)
-        {
-            return 0;
-        }
+    };
 
-        memo[x] = min(findMinimumMove(x - 2), findMinimumMove(x - 3)) + 1;
-        return memo[x];
-    }
-};
+}

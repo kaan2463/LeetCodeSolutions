@@ -1,17 +1,23 @@
-// 268_Missing_Number
-class Solution
+namespace _268_Missing_Number
 {
-public:
-    int missingNumber(vector<int>& nums)
+#include<solution.h>
+
+    // 268_Missing_Number
+    class Solution
     {
-        int sum = 0;
-        int n = nums.size();
-        for (int i = 0; i < n; i++)
+    public:
+        int missingNumber(vector<int>& nums)
         {
-            sum += nums[i];
+            int sum = 0;
+            int n = nums.size();
+            for (int i = 0; i < n; i++)
+            {
+                sum += nums[i];
+            }
+
+            return (n * (n + 1) / 2) - sum;
+
         }
+    };
 
-        return (n * (n + 1) / 2) - sum;
-
-    }
-};
+}

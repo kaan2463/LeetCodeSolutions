@@ -1,28 +1,34 @@
-// 2125_Number_of_Laser_Beams_in_a_Bank
-class Solution
+namespace _2125_Number_of_Laser_Beams_in_a_Bank
 {
-public:
-    int numberOfBeams(vector<string>& bank)
+#include<solution.h>
+
+    // 2125_Number_of_Laser_Beams_in_a_Bank
+    class Solution
     {
-        int sum = 0;
-        int count = 0;
-        int prev = 0;
-        for (int i = 0; i < bank.size(); i++)
+    public:
+        int numberOfBeams(vector<string>& bank)
         {
-            count = 0;
-            for (int j = 0; j < bank[i].size(); j++)
+            int sum = 0;
+            int count = 0;
+            int prev = 0;
+            for (int i = 0; i < bank.size(); i++)
             {
-                if (bank[i].at(j) == '1')
+                count = 0;
+                for (int j = 0; j < bank[i].size(); j++)
                 {
-                    count++;
+                    if (bank[i].at(j) == '1')
+                    {
+                        count++;
+                    }
+                }
+                if (count > 0)
+                {
+                    sum += prev * count;
+                    prev = count;
                 }
             }
-            if (count > 0)
-            {
-                sum += prev * count;
-                prev = count;
-            }
+            return sum;
         }
-        return sum;
-    }
-};
+    };
+
+}

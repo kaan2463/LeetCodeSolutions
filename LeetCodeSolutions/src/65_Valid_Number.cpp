@@ -1,11 +1,17 @@
-// 65_Valid_Number
-class Solution
+namespace _65_Valid_Number
 {
-public:
-    bool isNumber(string s)
-    {
-        regex numreg("[+-]{0,1}(([0-9]+[\.]{0,1}[0-9]*)|([0-9]*[\.]{0,1}[0-9]+))($|[eE][+-]{0,1}[0-9]+)");
+#include<solution.h>
 
-        return regex_match(s, numreg);
-    }
-};
+    // 65_Valid_Number
+    class Solution
+    {
+    public:
+        bool isNumber(string s)
+        {
+            regex numreg("[+-]{0,1}(([0-9]+[\.]{0,1}[0-9]*)|([0-9]*[\.]{0,1}[0-9]+))($|[eE][+-]{0,1}[0-9]+)");
+
+            return regex_match(s, numreg);
+        }
+    };
+
+}

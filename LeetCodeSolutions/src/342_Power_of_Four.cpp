@@ -1,15 +1,21 @@
-// 342_Power_of_Four
-class Solution
+namespace _342_Power_of_Four
 {
-public:
-    bool isPowerOfFour(int n)
-    {
-        int mask = 0x55555555;
+#include<solution.h>
 
-        if (n > 0 && (n & mask) == n && ((n & (n - 1)) == 0))
+    // 342_Power_of_Four
+    class Solution
+    {
+    public:
+        bool isPowerOfFour(int n)
         {
-            return true;
+            int mask = 0x55555555;
+
+            if (n > 0 && (n & mask) == n && ((n & (n - 1)) == 0))
+            {
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
-};
+    };
+
+}

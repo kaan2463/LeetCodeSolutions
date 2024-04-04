@@ -1,30 +1,36 @@
-// 46_Permutations
-class Solution
+namespace _46_Permutations
 {
-public:
-    vector<vector<int>> permute(vector<int>& nums)
-    {
-        vector<vector<int>> v;
-        vector<int> perm;
-        permute1(nums, perm, v);
-        return v;
-    }
+#include<solution.h>
 
-    void permute1(vector<int> nums, vector<int> perm, vector<vector<int>>& v)
+    // 46_Permutations
+    class Solution
     {
-        if (nums.empty())
+    public:
+        vector<vector<int>> permute(vector<int>& nums)
         {
-            v.push_back(perm);
-            return;
+            vector<vector<int>> v;
+            vector<int> perm;
+            permute1(nums, perm, v);
+            return v;
         }
 
-        for (int i = 0; i < nums.size(); i++)
+        void permute1(vector<int> nums, vector<int> perm, vector<vector<int>>& v)
         {
-            vector<int> newPerm = perm;
-            newPerm.push_back(nums[i]);
-            vector<int> newNums = nums;
-            newNums.erase(newNums.begin() + i);
-            permute1(newNums, newPerm, v);
+            if (nums.empty())
+            {
+                v.push_back(perm);
+                return;
+            }
+
+            for (int i = 0; i < nums.size(); i++)
+            {
+                vector<int> newPerm = perm;
+                newPerm.push_back(nums[i]);
+                vector<int> newNums = nums;
+                newNums.erase(newNums.begin() + i);
+                permute1(newNums, newPerm, v);
+            }
         }
-    }
-};
+    };
+
+}

@@ -1,31 +1,37 @@
-// 14_Longest_Common_Prefix
-class Solution
+namespace _14_Longest_Common_Prefix
 {
-public:
-    string getCommon(string a, string b)
+#include<solution.h>
+
+    // 14_Longest_Common_Prefix
+    class Solution
     {
-        string str = "";
-        for (int i = 0; i < a.size() && i < b.size(); i++)
+    public:
+        string getCommon(string a, string b)
         {
-            if (a.at(i) != b.at(i))
+            string str = "";
+            for (int i = 0; i < a.size() && i < b.size(); i++)
             {
-                break;
+                if (a.at(i) != b.at(i))
+                {
+                    break;
+                }
+                str += a.at(i);
             }
-            str += a.at(i);
+            return str;
         }
-        return str;
-    }
-    string longestCommonPrefix(vector<string>& strs)
-    {
-        if (strs.empty())
+        string longestCommonPrefix(vector<string>& strs)
         {
-            return "";
+            if (strs.empty())
+            {
+                return "";
+            }
+            string str = strs[0];
+            for (int i = 1; i < strs.size(); i++)
+            {
+                str = getCommon(str, strs[i]);
+            }
+            return str;
         }
-        string str = strs[0];
-        for (int i = 1; i < strs.size(); i++)
-        {
-            str = getCommon(str, strs[i]);
-        }
-        return str;
-    }
-};
+    };
+
+}

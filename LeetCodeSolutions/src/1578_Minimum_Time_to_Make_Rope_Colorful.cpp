@@ -1,33 +1,39 @@
-// 1578_Minimum_Time_to_Make_Rope_Colorful
-class Solution
+namespace _1578_Minimum_Time_to_Make_Rope_Colorful
 {
-public:
-    int minCost(string colors, vector<int>& neededTime)
+#include<solution.h>
+
+    // 1578_Minimum_Time_to_Make_Rope_Colorful
+    class Solution
     {
-
-        char prev = '\0';
-        int max = 0;
-        int sum = 0;
-        int allSum = 0;
-        for (int i = 0; i < colors.size(); i++)
+    public:
+        int minCost(string colors, vector<int>& neededTime)
         {
-            if (prev == colors.at(i))
+
+            char prev = '\0';
+            int max = 0;
+            int sum = 0;
+            int allSum = 0;
+            for (int i = 0; i < colors.size(); i++)
             {
-                max = max < neededTime[i] ? neededTime[i] : max;
-                sum += neededTime[i];
+                if (prev == colors.at(i))
+                {
+                    max = max < neededTime[i] ? neededTime[i] : max;
+                    sum += neededTime[i];
+                }
+                else
+                {
+                    allSum += sum - max;
+                    sum = neededTime[i];
+                    max = neededTime[i];
+                }
+                prev = colors.at(i);
             }
-            else
-            {
-                allSum += sum - max;
-                sum = neededTime[i];
-                max = neededTime[i];
-            }
-            prev = colors.at(i);
+
+            allSum += sum - max;
+
+            return allSum;
+
         }
+    };
 
-        allSum += sum - max;
-
-        return allSum;
-
-    }
-};
+}

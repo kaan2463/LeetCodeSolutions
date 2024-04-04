@@ -1,24 +1,30 @@
-// 1332_Remove_Palindromic_Subsequences
-class Solution
+namespace _1332_Remove_Palindromic_Subsequences
 {
-public:
-    int removePalindromeSub(string s)
+#include<solution.h>
+
+    // 1332_Remove_Palindromic_Subsequences
+    class Solution
     {
-        if (!s.size())return 0;
-
-        int i = 0, j = s.size() - 1;
-
-        while (i < j)
+    public:
+        int removePalindromeSub(string s)
         {
+            if (!s.size())return 0;
 
-            if (s[i] != s[j])return 2;
+            int i = 0, j = s.size() - 1;
 
-            i++;
-            j--;
+            while (i < j)
+            {
 
+                if (s[i] != s[j])return 2;
+
+                i++;
+                j--;
+
+            }
+
+
+            return 1;
         }
+    };
 
-
-        return 1;
-    }
-};
+}

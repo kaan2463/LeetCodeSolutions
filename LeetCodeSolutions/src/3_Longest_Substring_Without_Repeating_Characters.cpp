@@ -1,37 +1,43 @@
-class Solution
+namespace _3_Longest_Substring_Without_Repeating_Characters
 {
-public:
+#include<solution.h>
 
-    int contains(string str, char c)
+    class Solution
     {
+    public:
 
-        int res = -1;
-        for (const char* it = str.c_str(); (*it) != '\0'; it++)
+        int contains(string str, char c)
         {
-            if ((*it) == c)
+
+            int res = -1;
+            for (const char* it = str.c_str(); (*it) != '\0'; it++)
             {
-                return (int)(it - str.c_str());
+                if ((*it) == c)
+                {
+                    return (int)(it - str.c_str());
+                }
             }
+
+            return -1;
         }
 
-        return -1;
-    }
-
-    int lengthOfLongestSubstring(string s)
-    {
-        string temp = "";
-        int count = 0;
-
-        for (int i = 0; i < s.size(); i++)
+        int lengthOfLongestSubstring(string s)
         {
-            if (contains(temp, s.at(i)) != -1)
-            {
+            string temp = "";
+            int count = 0;
 
-                temp = temp.substr(contains(temp, s.at(i)) + 1, temp.size() - 1);
+            for (int i = 0; i < s.size(); i++)
+            {
+                if (contains(temp, s.at(i)) != -1)
+                {
+
+                    temp = temp.substr(contains(temp, s.at(i)) + 1, temp.size() - 1);
+                }
+                temp += s.at(i);
+                count = temp.size() > count ? temp.size() : count;
             }
-            temp += s.at(i);
-            count = temp.size() > count ? temp.size() : count;
+            return count;
         }
-        return count;
-    }
-};
+    };
+
+}

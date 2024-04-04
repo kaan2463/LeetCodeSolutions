@@ -1,38 +1,44 @@
-// 80_Remove_Duplicates_from_Sorted_Array_II
-class Solution
+namespace _80_Remove_Duplicates_from_Sorted_Array_II
 {
-public:
-    int removeDuplicates(vector<int>& nums)
+#include<solution.h>
+
+    // 80_Remove_Duplicates_from_Sorted_Array_II
+    class Solution
     {
-        if (nums.empty())
+    public:
+        int removeDuplicates(vector<int>& nums)
         {
-            return nums.size();
-        }
-
-        int shift = 0;
-        const int NEXT_COUNT = 2;
-        int count = 0;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            if (i > shift && nums[i - shift - 1] == nums[i])
+            if (nums.empty())
             {
-
-                if (count > NEXT_COUNT - 2)
-                {
-                    shift++;
-                }
-                else
-                {
-                    nums[i - shift] = nums[i];
-                }
-                count++;
-                continue;
+                return nums.size();
             }
 
-            nums[i - shift] = nums[i];
-            count = 0;
-        }
+            int shift = 0;
+            const int NEXT_COUNT = 2;
+            int count = 0;
+            for (int i = 0; i < nums.size(); i++)
+            {
+                if (i > shift && nums[i - shift - 1] == nums[i])
+                {
 
-        return nums.size() - shift;
-    }
-};
+                    if (count > NEXT_COUNT - 2)
+                    {
+                        shift++;
+                    }
+                    else
+                    {
+                        nums[i - shift] = nums[i];
+                    }
+                    count++;
+                    continue;
+                }
+
+                nums[i - shift] = nums[i];
+                count = 0;
+            }
+
+            return nums.size() - shift;
+        }
+    };
+
+}

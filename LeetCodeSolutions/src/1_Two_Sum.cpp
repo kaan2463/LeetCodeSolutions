@@ -1,19 +1,25 @@
-class Solution
+namespace _1_Two_Sum
 {
-public:
-    vector<int> twoSum(vector<int>& nums, int target)
+#include <solution.h>
+
+    class Solution
     {
-        for (int i = 0; i < nums.size(); i++)
+    public:
+        vector<int> twoSum(vector<int>& nums, int target)
         {
-            for (int j = 0; j < nums.size(); j++)
+            for (int i = 0; i < nums.size(); i++)
             {
-                if (i == j) continue;
-                if ((nums[i] + nums[j]) == target)
+                for (int j = 0; j < nums.size(); j++)
                 {
-                    return { i,j };
+                    if (i == j) continue;
+                    if ((nums[i] + nums[j]) == target)
+                    {
+                        return { i,j };
+                    }
                 }
             }
+            return {};
         }
-        return {};
-    }
-};
+    };
+
+}

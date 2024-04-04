@@ -1,21 +1,26 @@
-// 9_Palindrome_Number
-class Solution
+namespace _9_Palindrome_Number
 {
-public:
-    bool isPalindrome(int x)
+#include<solution.h>
+
+    class Solution
     {
-        if (x < 0)
+    public:
+        bool isPalindrome(int x)
         {
-            return false;
+            if (x < 0)
+            {
+                return false;
+            }
+            long int a = 0;
+            int b = x;
+            while (b != 0)
+            {
+                a = a * 10;
+                a = a + (b % 10);
+                b = b / 10;
+            }
+            return !(a - x);
         }
-        long int a = 0;
-        int b = x;
-        while (b != 0)
-        {
-            a = a * 10;
-            a = a + (b % 10);
-            b = b / 10;
-        }
-        return !(a - x);
-    }
-};
+    };
+
+}

@@ -1,16 +1,22 @@
-// 1480_Running_Sum_of_1d_Array
-class Solution
+namespace _1480_Running_Sum_of_1d_Array
 {
-public:
-    vector<int> runningSum(vector<int>& nums)
+#include<solution.h>
+
+    // 1480_Running_Sum_of_1d_Array
+    class Solution
     {
-        vector<int> v(nums.size());
-        int sum = 0;
-        for (int i = 0; i < nums.size(); i++)
+    public:
+        vector<int> runningSum(vector<int>& nums)
         {
-            sum += nums[i];
-            v[i] = sum;
+            vector<int> v(nums.size());
+            int sum = 0;
+            for (int i = 0; i < nums.size(); i++)
+            {
+                sum += nums[i];
+                v[i] = sum;
+            }
+            return v;
         }
-        return v;
-    }
-};
+    };
+
+}

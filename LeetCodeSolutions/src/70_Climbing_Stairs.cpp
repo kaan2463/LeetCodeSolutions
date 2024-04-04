@@ -1,23 +1,29 @@
-// 70_Climbing_Stairs
-class Solution
+namespace _70_Climbing_Stairs
 {
-    vector<int> memo;
-public:
-    int climbStairs(int n)
+#include<solution.h>
+
+    // 70_Climbing_Stairs
+    class Solution
     {
-        if (memo.size() > n - 1)
+        vector<int> memo;
+    public:
+        int climbStairs(int n)
         {
-            return memo[n - 1];
+            if (memo.size() > n - 1)
+            {
+                return memo[n - 1];
+            }
+            if (n < 0)
+            {
+                return 0;
+            }
+            if (n == 0)
+            {
+                return 1;
+            }
+            memo.push_back(climbStairs(n - 1) + climbStairs(n - 2));
+            return memo.back();
         }
-        if (n < 0)
-        {
-            return 0;
-        }
-        if (n == 0)
-        {
-            return 1;
-        }
-        memo.push_back(climbStairs(n - 1) + climbStairs(n - 2));
-        return memo.back();
-    }
-};
+    };
+
+}

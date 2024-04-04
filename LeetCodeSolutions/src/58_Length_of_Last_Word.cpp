@@ -1,32 +1,38 @@
-// 58_Length_of_Last_Word
-class Solution
+namespace _58_Length_of_Last_Word
 {
-public:
-    int lengthOfLastWord(string s)
-    {
-        bool begin = false;
-        int count = 0;
+#include<solution.h>
 
-        for (int i = s.size() - 1; i >= 0; i--)
+    // 58_Length_of_Last_Word
+    class Solution
+    {
+    public:
+        int lengthOfLastWord(string s)
         {
-            if ((int)s.at(i) >= (int)'A' && (int)s.at(i) <= (int)'z')
+            bool begin = false;
+            int count = 0;
+
+            for (int i = s.size() - 1; i >= 0; i--)
             {
-                if (!begin)
+                if ((int)s.at(i) >= (int)'A' && (int)s.at(i) <= (int)'z')
                 {
-                    begin = true;
+                    if (!begin)
+                    {
+                        begin = true;
+                    }
+                }
+                else if (begin)
+                {
+                    return count;
+                }
+
+                if (begin)
+                {
+                    count++;
                 }
             }
-            else if (begin)
-            {
-                return count;
-            }
 
-            if (begin)
-            {
-                count++;
-            }
+            return count;
         }
+    };
 
-        return count;
-    }
-};
+}

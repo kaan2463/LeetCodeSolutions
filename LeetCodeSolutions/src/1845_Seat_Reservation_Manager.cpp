@@ -1,42 +1,48 @@
-// 1845_Seat_Reservation_Manager
-class SeatManager
+namespace _1845_Seat_Reservation_Manager
 {
-private:
-    int n;
-    int current;
-    set<int> unreserved;
-public:
-    SeatManager(int n)
-    {
-        this->n = n;
-        this->current = 0;
-    }
+#include<solution.h>
 
-    int reserve()
+    // 1845_Seat_Reservation_Manager
+    class SeatManager
     {
-        if (unreserved.empty())
+    private:
+        int n;
+        int current;
+        set<int> unreserved;
+    public:
+        SeatManager(int n)
         {
-            current++;
-            return current;
+            this->n = n;
+            this->current = 0;
         }
 
-        auto first = unreserved.begin();
+        int reserve()
+        {
+            if (unreserved.empty())
+            {
+                current++;
+                return current;
+            }
 
-        int val = *first;
-        unreserved.erase(first);
+            auto first = unreserved.begin();
 
-        return val;
-    }
+            int val = *first;
+            unreserved.erase(first);
 
-    void unreserve(int seatNumber)
-    {
-        unreserved.insert(seatNumber);
-    }
-};
+            return val;
+        }
 
-/**
- * Your SeatManager object will be instantiated and called as such:
- * SeatManager* obj = new SeatManager(n);
- * int param_1 = obj->reserve();
- * obj->unreserve(seatNumber);
- */
+        void unreserve(int seatNumber)
+        {
+            unreserved.insert(seatNumber);
+        }
+    };
+
+    /**
+     * Your SeatManager object will be instantiated and called as such:
+     * SeatManager* obj = new SeatManager(n);
+     * int param_1 = obj->reserve();
+     * obj->unreserve(seatNumber);
+     */
+
+}

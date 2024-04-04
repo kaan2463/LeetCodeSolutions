@@ -1,36 +1,42 @@
-// 202_Happy_Number
-class Solution
+namespace _202_Happy_Number
 {
-    map<int, bool> memo;
-public:
+#include<solution.h>
 
-    int square(int x)
+    // 202_Happy_Number
+    class Solution
     {
-        return x * x;
-    }
-    bool isHappy(int n)
-    {
-        if (n < 0)
+        map<int, bool> memo;
+    public:
+
+        int square(int x)
         {
-            memo.clear();
-            return false;
+            return x * x;
         }
-        if (memo[n])
+        bool isHappy(int n)
         {
-            memo.clear();
-            return false;
+            if (n < 0)
+            {
+                memo.clear();
+                return false;
+            }
+            if (memo[n])
+            {
+                memo.clear();
+                return false;
+            }
+            memo[n] = true;
+            int sum = 0;
+            while (n > 0)
+            {
+                sum += square(n % 10);
+                n /= 10;
+            }
+            if (sum == 1)
+            {
+                return true;
+            }
+            return isHappy(sum);
         }
-        memo[n] = true;
-        int sum = 0;
-        while (n > 0)
-        {
-            sum += square(n % 10);
-            n /= 10;
-        }
-        if (sum == 1)
-        {
-            return true;
-        }
-        return isHappy(sum);
-    }
-};
+    };
+
+}

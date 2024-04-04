@@ -1,55 +1,61 @@
-// 24_Swap_Nodes_in_Pairs
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-class Solution
+namespace _24_Swap_Nodes_in_Pairs
 {
-public:
+#include<solution.h>
 
-    ListNode* reverseKGroup(ListNode* head, int k)
+    // 24_Swap_Nodes_in_Pairs
+    /**
+     * Definition for singly-linked list.
+     * struct ListNode {
+     *     int val;
+     *     ListNode *next;
+     *     ListNode() : val(0), next(nullptr) {}
+     *     ListNode(int x) : val(x), next(nullptr) {}
+     *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+     * };
+     */
+    class Solution
     {
-        if (head == nullptr)
-        {
-            return nullptr;
-        }
-        ListNode* first = head;
+    public:
 
-        ListNode* prev = nullptr;
-        ListNode* current = head;
-        ListNode* next = head->next;
-
-        int i = k;
-        while (i > 1 && next != nullptr)
+        ListNode* reverseKGroup(ListNode* head, int k)
         {
+            if (head == nullptr)
+            {
+                return nullptr;
+            }
+            ListNode* first = head;
+
+            ListNode* prev = nullptr;
+            ListNode* current = head;
+            ListNode* next = head->next;
+
+            int i = k;
+            while (i > 1 && next != nullptr)
+            {
+
+                current->next = prev;
+                prev = current;
+                current = next;
+                next = next->next;
+                i--;
+            }
 
             current->next = prev;
-            prev = current;
-            current = next;
-            next = next->next;
-            i--;
+
+            if (i > 1)
+            {
+                return reverseKGroup(current, k - i + 1);
+            }
+
+            first->next = reverseKGroup(next, k);
+
+            return current;
         }
 
-        current->next = prev;
-
-        if (i > 1)
+        ListNode* swapPairs(ListNode* head)
         {
-            return reverseKGroup(current, k - i + 1);
+            return reverseKGroup(head, 2);
         }
+    };
 
-        first->next = reverseKGroup(next, k);
-
-        return current;
-    }
-
-    ListNode* swapPairs(ListNode* head)
-    {
-        return reverseKGroup(head, 2);
-    }
-};
+}

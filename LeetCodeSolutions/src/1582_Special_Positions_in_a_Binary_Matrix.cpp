@@ -1,44 +1,50 @@
-// 1582_Special_Positions_in_a_Binary_Matrix
-class Solution
+namespace _1582_Special_Positions_in_a_Binary_Matrix
 {
-public:
-    int numSpecial(vector<vector<int>>& mat)
+#include<solution.h>
+
+    // 1582_Special_Positions_in_a_Binary_Matrix
+    class Solution
     {
-        if (mat.empty())
+    public:
+        int numSpecial(vector<vector<int>>& mat)
         {
-            return 0;
-        }
-        vector<int> rowVec(mat.size(), 0);
-        vector<int> colVec(mat[0].size(), 0);
-
-        for (int i = 0; i < mat.size(); i++)
-        {
-            for (int j = 0; j < mat[i].size(); j++)
+            if (mat.empty())
             {
-                if (mat[i][j])
+                return 0;
+            }
+            vector<int> rowVec(mat.size(), 0);
+            vector<int> colVec(mat[0].size(), 0);
+
+            for (int i = 0; i < mat.size(); i++)
+            {
+                for (int j = 0; j < mat[i].size(); j++)
                 {
-                    rowVec[i]++;
-                    colVec[j]++;
+                    if (mat[i][j])
+                    {
+                        rowVec[i]++;
+                        colVec[j]++;
+                    }
                 }
             }
-        }
-        int count = 0;
+            int count = 0;
 
-        for (int i = 0; i < mat.size(); i++)
-        {
-            if (rowVec[i] != 1)
+            for (int i = 0; i < mat.size(); i++)
             {
-                continue;
-            }
-            for (int j = 0; j < mat[i].size(); j++)
-            {
-                if (mat[i][j] && colVec[j] == 1)
+                if (rowVec[i] != 1)
                 {
-                    count++;
+                    continue;
+                }
+                for (int j = 0; j < mat[i].size(); j++)
+                {
+                    if (mat[i][j] && colVec[j] == 1)
+                    {
+                        count++;
+                    }
                 }
             }
-        }
 
-        return count;
-    }
-};
+            return count;
+        }
+    };
+
+}

@@ -1,0 +1,3 @@
+#ifndef LEETCODE_SOLUTION_H
+#define LEETCODE_SOLUTION_H
+#endif

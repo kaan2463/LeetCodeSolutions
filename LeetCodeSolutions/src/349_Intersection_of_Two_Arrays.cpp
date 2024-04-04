@@ -1,24 +1,30 @@
-// 349_Intersection_of_Two_Arrays
-class Solution
+namespace _349_Intersection_of_Two_Arrays
 {
-public:
-    vector<int> intersection(vector<int>& nums1, vector<int>& nums2)
-    {
-        map<int, bool> mm;
-        vector<int> inter;
+#include<solution.h>
 
-        for (auto item : nums1)
+    // 349_Intersection_of_Two_Arrays
+    class Solution
+    {
+    public:
+        vector<int> intersection(vector<int>& nums1, vector<int>& nums2)
         {
-            mm[item] = true;
-        }
-        for (auto item : nums2)
-        {
-            if (mm[item])
+            map<int, bool> mm;
+            vector<int> inter;
+
+            for (auto item : nums1)
             {
-                inter.push_back(item);
-                mm[item] = false;
+                mm[item] = true;
             }
+            for (auto item : nums2)
+            {
+                if (mm[item])
+                {
+                    inter.push_back(item);
+                    mm[item] = false;
+                }
+            }
+            return inter;
         }
-        return inter;
-    }
-};
+    };
+
+}

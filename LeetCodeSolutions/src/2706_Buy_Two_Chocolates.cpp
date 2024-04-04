@@ -1,29 +1,35 @@
-// 2706_Buy_Two_Chocolates
-class Solution
+namespace _2706_Buy_Two_Chocolates
 {
-public:
-    int buyChoco(vector<int>& prices, int money)
+#include<solution.h>
+
+    // 2706_Buy_Two_Chocolates
+    class Solution
     {
-        int diff = -1;
-        int max = -1;
-        for (int i = 0; i < prices.size(); i++)
+    public:
+        int buyChoco(vector<int>& prices, int money)
         {
-            if (prices[i] >= money)
+            int diff = -1;
+            int max = -1;
+            for (int i = 0; i < prices.size(); i++)
             {
-                continue;
-            }
-            diff = money - prices[i];
-            for (int j = i + 1; j < prices.size(); j++)
-            {
-                if (diff < prices[j])
+                if (prices[i] >= money)
                 {
                     continue;
                 }
+                diff = money - prices[i];
+                for (int j = i + 1; j < prices.size(); j++)
+                {
+                    if (diff < prices[j])
+                    {
+                        continue;
+                    }
 
-                max = (diff - prices[j]) > max ? (diff - prices[j]) : max;
+                    max = (diff - prices[j]) > max ? (diff - prices[j]) : max;
+                }
             }
-        }
 
-        return max >= 0 ? max : money;
-    }
-};
+            return max >= 0 ? max : money;
+        }
+    };
+
+}

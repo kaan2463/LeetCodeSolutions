@@ -1,27 +1,33 @@
-// 66_Plus_One
-class Solution
+namespace _66_Plus_One
 {
-public:
-    vector<int> plusOne(vector<int>& digits)
-    {
+#include<solution.h>
 
-        for (int i = digits.size() - 1; i >= 0; i--)
+    // 66_Plus_One
+    class Solution
+    {
+    public:
+        vector<int> plusOne(vector<int>& digits)
         {
-            digits[i] += 1;
-            if (digits[i] / 10 == 1)
+
+            for (int i = digits.size() - 1; i >= 0; i--)
             {
-                digits[i] %= 10;
+                digits[i] += 1;
+                if (digits[i] / 10 == 1)
+                {
+                    digits[i] %= 10;
+                }
+                else
+                {
+                    return digits;
+                }
             }
-            else
+            if (digits[0] / 10 == 1)
             {
-                return digits;
+                digits[0] %= 10;
             }
+            digits.insert(digits.begin(), 1);
+            return digits;
         }
-        if (digits[0] / 10 == 1)
-        {
-            digits[0] %= 10;
-        }
-        digits.insert(digits.begin(), 1);
-        return digits;
-    }
-};
+    };
+
+}

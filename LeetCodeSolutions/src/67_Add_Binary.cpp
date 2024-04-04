@@ -1,52 +1,58 @@
-// 67_Add_Binary
-class Solution
+namespace _67_Add_Binary
 {
-public:
-    bool xorBool(bool a, bool b)
+#include<solution.h>
+
+    // 67_Add_Binary
+    class Solution
     {
-
-        return ((!a) & b) | (a & (!b));
-    }
-
-    string addBinary(string a, string b)
-    {
-
-        if (a.size() < b.size())
+    public:
+        bool xorBool(bool a, bool b)
         {
-            return addBinary(b, a);
+
+            return ((!a) & b) | (a & (!b));
         }
 
-        int l = 0, r = 0;
-        int c = 0, s = 0;
-        string sum = "";
-
-        for (int i = a.size() - 1; 0 <= i; i--)
+        string addBinary(string a, string b)
         {
 
-            if (b.size() - 1 < a.size() - 1 - i)
+            if (a.size() < b.size())
             {
-                r = 0;
-            }
-            else
-            {
-                r = (int)(b.at(b.size() - a.size() + i) - '0');
+                return addBinary(b, a);
             }
 
-            l = (int)(a.at(i) - '0');
+            int l = 0, r = 0;
+            int c = 0, s = 0;
+            string sum = "";
+
+            for (int i = a.size() - 1; 0 <= i; i--)
+            {
+
+                if (b.size() - 1 < a.size() - 1 - i)
+                {
+                    r = 0;
+                }
+                else
+                {
+                    r = (int)(b.at(b.size() - a.size() + i) - '0');
+                }
+
+                l = (int)(a.at(i) - '0');
 
 
-            s = xorBool(xorBool(l, r), c);
-            c = (xorBool(l, r) & c) | (l & r);
+                s = xorBool(xorBool(l, r), c);
+                c = (xorBool(l, r) & c) | (l & r);
 
-            sum = to_string(s) + sum;
+                sum = to_string(s) + sum;
 
-            printf("%d %d\n", l, r);
+                printf("%d %d\n", l, r);
+            }
+            if (c)
+            {
+                sum = to_string(c) + sum;
+            }
+
+            return sum;
         }
-        if (c)
-        {
-            sum = to_string(c) + sum;
-        }
+    };
 
-        return sum;
-    }
-};
+}

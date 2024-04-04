@@ -1,51 +1,57 @@
-// 228_Summary_Ranges
-class Solution
+namespace _228_Summary_Ranges
 {
-public:
-    vector<string> summaryRanges(vector<int>& nums)
+#include<solution.h>
+
+    // 228_Summary_Ranges
+    class Solution
     {
-
-
-        vector<string> s;
-        if (nums.empty())
-        {
-            return s;
-        }
-
-        int begin = 0;
-        int i = 0;
-        while (i < nums.size() - 1)
+    public:
+        vector<string> summaryRanges(vector<int>& nums)
         {
 
-            if (nums[i] + 1 == nums[i + 1])
+
+            vector<string> s;
+            if (nums.empty())
             {
-
+                return s;
             }
-            else
+
+            int begin = 0;
+            int i = 0;
+            while (i < nums.size() - 1)
             {
-                if (begin < i)
+
+                if (nums[i] + 1 == nums[i + 1])
                 {
-                    s.push_back(to_string(nums[begin]) + "->" + to_string(nums[i]));
+
                 }
                 else
                 {
-                    s.push_back(to_string(nums[begin]));
+                    if (begin < i)
+                    {
+                        s.push_back(to_string(nums[begin]) + "->" + to_string(nums[i]));
+                    }
+                    else
+                    {
+                        s.push_back(to_string(nums[begin]));
+                    }
+
+                    begin = i + 1;
                 }
 
-                begin = i + 1;
+                i++;
+            }
+            if (begin < i)
+            {
+                s.push_back(to_string(nums[begin]) + "->" + to_string(nums[i]));
+            }
+            else
+            {
+                s.push_back(to_string(nums[begin]));
             }
 
-            i++;
+            return s;
         }
-        if (begin < i)
-        {
-            s.push_back(to_string(nums[begin]) + "->" + to_string(nums[i]));
-        }
-        else
-        {
-            s.push_back(to_string(nums[begin]));
-        }
+    };
 
-        return s;
-    }
-};
+}

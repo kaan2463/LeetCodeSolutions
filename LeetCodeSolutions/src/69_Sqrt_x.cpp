@@ -1,22 +1,28 @@
-// 69_Sqrt_x_
-class Solution
+namespace _69_Sqrt_x
 {
-public:
-    double abs(double x)
-    {
-        return x < 0 ? -x : x;
-    }
-    int mySqrt(int r)
-    {
-        double x = 1.0;
-        double old = INT_MAX;
+#include<solution.h>
 
-
-        while (abs(old - x) > 0.9)
+    // 69_Sqrt_x_
+    class Solution
+    {
+    public:
+        double abs(double x)
         {
-            old = x;
-            x = x - (x * x - r) / (2 * x);
+            return x < 0 ? -x : x;
         }
-        return x;
-    }
-};
+        int mySqrt(int r)
+        {
+            double x = 1.0;
+            double old = INT_MAX;
+
+
+            while (abs(old - x) > 0.9)
+            {
+                old = x;
+                x = x - (x * x - r) / (2 * x);
+            }
+            return x;
+        }
+    };
+
+}

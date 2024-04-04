@@ -1,34 +1,40 @@
-// 35_Search_Insert_Position
-class Solution
+namespace _35_Search_Insert_Position
 {
-public:
-    int searchInsert(vector<int>& nums, int target)
+#include<solution.h>
+
+    // 35_Search_Insert_Position
+    class Solution
     {
-
-        if (nums.empty())
-        {
-            return 0;
-        }
-
-        int begin = 0;
-        int end = nums.size() - 1;
-        int index = 0;
-
-        while (begin < end)
+    public:
+        int searchInsert(vector<int>& nums, int target)
         {
 
-            if (target <= nums[index])
+            if (nums.empty())
             {
-                end = index;
+                return 0;
             }
-            else
+
+            int begin = 0;
+            int end = nums.size() - 1;
+            int index = 0;
+
+            while (begin < end)
             {
-                begin = index + 1;
+
+                if (target <= nums[index])
+                {
+                    end = index;
+                }
+                else
+                {
+                    begin = index + 1;
+                }
+                index = begin + (end - begin) / 2;
             }
-            index = begin + (end - begin) / 2;
+
+
+            return nums[index] < target ? index + 1 : index;
         }
+    };
 
-
-        return nums[index] < target ? index + 1 : index;
-    }
-};
+}

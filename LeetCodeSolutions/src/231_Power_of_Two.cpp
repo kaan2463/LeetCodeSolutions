@@ -1,13 +1,19 @@
-// 231_Power_of_Two
-class Solution
+namespace _231_Power_of_Two
 {
-public:
-    bool isPowerOfTwo(int n)
+#include<solution.h>
+
+    // 231_Power_of_Two
+    class Solution
     {
-        if (n < 1)
+    public:
+        bool isPowerOfTwo(int n)
         {
-            return false;
+            if (n < 1)
+            {
+                return false;
+            }
+            return (n & (n - 1)) == 0;
         }
-        return (n & (n - 1)) == 0;
-    }
-};
+    };
+
+}
